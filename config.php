@@ -2,6 +2,7 @@
 // Configuração de acesso ao banco MySQL
 // No KingHost, crie um banco de dados e um usuário, depois atualize esses valores.
 
+<<<<<<< HEAD
 const DB_HOST = 'mysql.contabilarruda.com.br';
 const DB_NAME = 'contabilarruda';
 const DB_USER = 'contabilar_add1';
@@ -24,6 +25,30 @@ const MAIL_POP3_HOST = 'pop.kinghost.net';
 const MAIL_POP3_PORT = 995; 
 const MAIL_POP3_USER = 'help-desk@arrudaempresarial.com.br';
 const MAIL_POP3_PASS = 'Arruda@2026';
+=======
+const DB_HOST = 'SEU';
+const DB_NAME = 'SEU';
+const DB_USER = 'SEU';
+const DB_PASS = 'SEU';
+
+// Configuração de email para notificações e recebimento de tickets
+const MAIL_FROM_ADDRESS = 'SEU';
+const MAIL_FROM_NAME = 'SEU';
+const MAIL_ADMIN_ADDRESS = 'SEU';
+
+// Configurações de Envio (SMTP)
+const MAIL_SMTP_HOST = 'SEU';
+const MAIL_SMTP_PORT = 587;
+const MAIL_SMTP_USER = 'SEU';
+const MAIL_SMTP_PASS = 'SEU';
+const MAIL_SMTP_SECURE = 'tls';
+
+// Configurações de Recebimento (POP3)
+const MAIL_POP3_HOST = 'SEU';
+const MAIL_POP3_PORT = 995; 
+const MAIL_POP3_USER = 'SEU';
+const MAIL_POP3_PASS = 'SEU';
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
 const MAIL_POP3_SECURE = 'ssl'; // use 'ssl', 'tls' ou deixe vazio se não usar
 
 // Diretório para armazenar uploads (anexos)
@@ -117,8 +142,13 @@ function ensureDbSchema(PDO $db): void
     if ($adminsCount === 0) {
         $hash = password_hash('arruda@2026', PASSWORD_DEFAULT);
         $stmtInsert = $db->prepare("INSERT INTO admins (name, email, password_hash) VALUES (?, ?, ?)");
+<<<<<<< HEAD
         $stmtInsert->execute(['Admin Renata', 'r.goveia@arrudaempresarial.com.br', $hash]);
         $stmtInsert->execute(['Admin Celeste', 'celeste@arrudaempresarial.com.br', $hash]);
+=======
+        $stmtInsert->execute([''SEU';', ''SEU';', $hash]);
+        $stmtInsert->execute([''SEU';', ''SEU';', $hash]);
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
     }
 
     // se a tabela tickets não tiver user_id, adiciona a coluna
@@ -254,6 +284,7 @@ function getTicketById(PDO $db, int $id)
     return $stmt->fetch();
 }
 
+<<<<<<< HEAD
 function saveTicketResponse(PDO $db, int $ticketId, string $sender, string $message, ?string $adminEmail = null): bool
 {
     $message = trim($message);
@@ -271,6 +302,8 @@ function saveTicketResponse(PDO $db, int $ticketId, string $sender, string $mess
     return $stmt->execute([$ticketId, $sender, $message, $adminEmail]);
 }
 
+=======
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
 function mimeHeader(string $text): string
 {
     return '=?UTF-8?B?' . base64_encode($text) . '?=';

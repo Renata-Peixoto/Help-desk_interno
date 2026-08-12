@@ -60,7 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $sentMessage = false;
                 if ($replyMsg !== '') {
                     $adminEmail = $_SESSION['admin_email'] ?? MAIL_ADMIN_ADDRESS;
+<<<<<<< HEAD
                     $saved = saveTicketResponse($db, $ticketId, 'admin', $replyMsg, $adminEmail);
+=======
+                    $stmtIns = $db->prepare('INSERT INTO ticket_responses (ticket_id, sender, message, admin_email) VALUES (?, ?, ?, ?)');
+                    $saved = $stmtIns->execute([$ticketId, 'admin', $replyMsg, $adminEmail]);
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                     if ($saved) {
                         $ticket = getTicketById($db, $ticketId);
                         if ($ticket) {
@@ -85,9 +90,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $error = 'Falha ao salvar a resposta no banco.';
                     }
                 }
+<<<<<<< HEAD
 
                 header('Location: admin.php?tab=tickets');
                 exit;
+=======
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
             }
         }
         
@@ -799,7 +807,11 @@ if ($isAdmin) {
                                     <form method="post" action="admin.php?tab=tickets" class="m-0" onsubmit="return confirm('Excluir permanentemente o ticket #<?= $ticket['id'] ?>? Esta ação não pode ser desfeita.');">
                                         <input type="hidden" name="delete_ticket" value="1">
                                         <input type="hidden" name="ticket_id" value="<?= $ticket['id'] ?>">
+<<<<<<< HEAD
                                         <button type="submit" class="btn btn-danger btn-sm" data-loading-text="Excluindo ticket..." style="padding: 8px 16px; margin: 0; background-color: #dc3545; border-color: #dc3545; color: white;" title="Excluir Ticket">
+=======
+                                        <button type="submit" class="btn btn-danger btn-sm" style="padding: 8px 16px; margin: 0; background-color: #dc3545; border-color: #dc3545; color: white;" title="Excluir Ticket">
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                                             <i class="fas fa-trash-alt me-1"></i> Excluir
                                         </button>
                                     </form>
@@ -815,6 +827,7 @@ if ($isAdmin) {
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         
+<<<<<<< HEAD
                                         <!-- ✨ O formulário agora abraça TODO o corpo e o rodapé do modal! -->
                                         <form method="post" action="admin.php?tab=tickets">
                                             <input type="hidden" name="update_ticket" value="1">
@@ -923,6 +936,113 @@ if ($isAdmin) {
                                                 </div>
                                             </div>
                                         </form> 
+=======
+                                        <div class="modal-body p-4">
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <h3 class="text-slate-800 font-bold m-0"><?= htmlspecialchars($ticket['subject']) ?></h3>
+                                                <span class="badge rounded-pill px-3 py-2 font-bold bg-<?= $ticket['status'] === 'Pendente' ? 'warning' : ($ticket['status'] === 'Em andamento' ? 'info' : 'success') ?>-light text-<?= $ticket['status'] === 'Pendente' ? 'warning' : ($ticket['status'] === 'Em andamento' ? 'info' : 'success') ?>">
+                                                    <?= htmlspecialchars($ticket['status']) ?>
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="row g-3 mb-4 bg-light p-3 rounded-2">
+                                                <div class="col-md-6">
+                                                    <strong class="text-slate-600 d-block mb-1"><i class="fas fa-user-circle me-1"></i> Solicitante</strong>
+                                                    <span class="d-block font-semibold text-slate-800"><?= htmlspecialchars($ticket['name']) ?></span>
+                                                    <a href="mailto:<?= htmlspecialchars($ticket['email']) ?>" class="text-muted text-sm text-decoration-none"><?= htmlspecialchars($ticket['email']) ?></a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <strong class="text-slate-600 d-block mb-1"><i class="fas fa-user-tie me-1"></i> Responsável Atual</strong>
+                                                    <span class="d-block font-semibold text-slate-800"><?= htmlspecialchars($ticket['responsible']) ?></span>
+                                                    <span class="text-muted text-sm">Aberto em: <?= htmlspecialchars(date('d/m/Y H:i', strtotime($ticket['created_at']))) ?></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <strong class="text-slate-600 d-block mb-2"><i class="fas fa-align-left me-1"></i> Descrição do Chamado</strong>
+                                                <div class="text-slate-700 bg-slate-50 p-4 rounded-3 border-start border-primary border-3" style="white-space: pre-line; background-color: #f8f9fa;">
+                                                    <?= htmlspecialchars($ticket['message']) ?>
+                                                </div>
+                                            </div>
+
+                                            <?php if (!empty($ticket['attachment'])): ?>
+                                                <div class="mb-3">
+                                                    <strong class="d-block text-slate-600 mb-2"><i class="fas fa-paperclip me-1"></i> Arquivo Anexo</strong>
+                                                    <?php $ext = strtolower(pathinfo($ticket['attachment'], PATHINFO_EXTENSION)); ?>
+                                                    <?php if (in_array($ext, ['jpg','jpeg','png','gif'], true)): ?>
+                                                        <a href="uploads/<?= htmlspecialchars($ticket['attachment']) ?>" target="_blank" class="d-inline-block">
+                                                            <img src="uploads/<?= htmlspecialchars($ticket['attachment']) ?>" alt="Anexo" class="img-thumbnail rounded-3" style="max-height: 200px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                                        </a>
+                                                    <?php else: ?>
+                                                        <a href="uploads/<?= htmlspecialchars($ticket['attachment']) ?>" target="_blank" class="btn btn-outline-info">
+                                                            <i class="fas fa-file-pdf me-1"></i> Visualizar Documento
+                                                        </a>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endif; ?>
+
+                                                    <?php
+                                                        // Busca respostas relacionadas a este ticket
+                                                        $stmtR = $db->prepare('SELECT * FROM ticket_responses WHERE ticket_id = ? ORDER BY created_at ASC');
+                                                        $stmtR->execute([$ticket['id']]);
+                                                        $responses = $stmtR->fetchAll();
+                                                    ?>
+
+                                                    <div class="mb-4">
+                                                        <strong class="text-slate-600 d-block mb-2"><i class="fas fa-comments me-1"></i> Histórico de Respostas</strong>
+                                                        <?php if (count($responses) === 0): ?>
+                                                            <p class="text-muted">Nenhuma resposta registrada.</p>
+                                                        <?php else: ?>
+                                                            <div class="d-flex flex-column gap-2">
+                                                                <?php foreach ($responses as $res): ?>
+                                                                    <div class="p-3 rounded-2" style="background: <?= $res['sender'] === 'admin' ? '#ffffff' : '#f8f9fa' ?>; border: 1px solid #e9ecef;">
+                                                                        <small class="text-muted d-block mb-1"><?= htmlspecialchars($res['sender']) ?> — <?= htmlspecialchars(date('d/m/Y H:i', strtotime($res['created_at']))) ?></small>
+                                                                        <div class="text-slate-700" style="white-space: pre-line;"><?= nl2br(htmlspecialchars($res['message'])) ?></div>
+                                                                    </div>
+                                                                <?php endforeach; ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+
+                                                    <form method="post" action="admin.php?tab=tickets">
+                                                        <input type="hidden" name="update_ticket" value="1">
+                                                        <input type="hidden" name="ticket_id" value="<?= $ticket['id'] ?>">
+                                                        <div class="mb-3">
+                                                            <label class="form-label text-sm text-slate-500 font-semibold mb-1">Responder ao Usuário</label>
+                                                            <textarea name="reply_message" class="form-control" rows="4" placeholder="Digite sua resposta para o usuário..."></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer bg-light p-3">
+                                                        <div class="row g-2 align-items-end w-100 m-0">
+                                                            <div class="col-md-4">
+                                                                <label class="form-label text-sm text-slate-500 font-semibold mb-1">Atualizar Status</label>
+                                                                <select name="status" class="form-select form-select-sm" style="box-shadow: none;">
+                                                                    <?php foreach (['Pendente', 'Em andamento', 'Resolvido'] as $st): ?>
+                                                                        <option value="<?= $st ?>" <?= $ticket['status'] === $st ? 'selected' : '' ?>><?= $st ?></option>
+                                                                    <?php endforeach; ?>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label class="form-label text-sm text-slate-500 font-semibold mb-1">Atribuir Responsável</label>
+                                                                <select name="responsible" class="form-select form-select-sm" style="box-shadow: none;">
+                                                                    <?php foreach (['Não sabe', 'Renata', 'Celeste'] as $resp): ?>
+                                                                        <option value="<?= $resp ?>" <?= $ticket['responsible'] === $resp ? 'selected' : '' ?>><?= $resp ?></option>
+                                                                    <?php endforeach; ?>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="col-md-4 d-flex justify-content-end gap-2">
+                                                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="padding: 8px 16px; margin: 0;">Fechar</button>
+                                                                <button type="submit" class="btn btn-primary btn-sm" style="padding: 8px 16px; margin: 0; background-color: #5dc171; border-color: #5dc171; color: white;">
+                                                                    <i class="fas fa-save me-1"></i> Salvar
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </form>
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                                     </div>
                                 </div>
                             </div>
@@ -998,7 +1118,11 @@ if ($isAdmin) {
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
                                 <button type="submit" class="btn btn-primary w-100" data-loading-text="Salvando administrador..." style="padding: 12px; margin-top: 15px; background-color: #5dc171; border-color: #5dc171; color: white;">
+=======
+                                <button type="submit" class="btn btn-primary w-100" style="padding: 12px; margin-top: 15px; background-color: #5dc171; border-color: #5dc171; color: white;">
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                                     <i class="fas fa-user-shield me-1"></i> Cadastrar Administrador
                                 </button>
                             </form>
@@ -1039,7 +1163,11 @@ if ($isAdmin) {
                                                             <form method="post" action="admin.php?tab=users" class="m-0" onsubmit="return confirm('Excluir o administrador \"<?= htmlspecialchars($admin['name'], ENT_QUOTES) ?>\"?');">
                                                                 <input type="hidden" name="delete_admin" value="1">
                                                                 <input type="hidden" name="admin_id" value="<?= $admin['id'] ?>">
+<<<<<<< HEAD
                                                                 <button type="submit" class="btn btn-danger btn-sm" data-loading-text="Excluindo administrador..." style="padding: 6px 12px; margin: 0; background-color: #dc3545; border-color: #dc3545; color: white;" title="Excluir Administrador">
+=======
+                                                                <button type="submit" class="btn btn-danger btn-sm" style="padding: 6px 12px; margin: 0; background-color: #dc3545; border-color: #dc3545; color: white;" title="Excluir Administrador">
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                                                                     <i class="fas fa-trash-alt"></i>
                                                                 </button>
                                                             </form>
@@ -1092,7 +1220,11 @@ if ($isAdmin) {
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
                                 <button type="submit" class="btn btn-primary w-100" data-loading-text="Salvando usuário..." style="padding: 12px; margin-top: 15px; background-color: #5dc171; border-color: #5dc171; color: white;">
+=======
+                                <button type="submit" class="btn btn-primary w-100" style="padding: 12px; margin-top: 15px; background-color: #5dc171; border-color: #5dc171; color: white;">
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                                     <i class="fas fa-check-circle me-1"></i> Cadastrar Usuário
                                 </button>
                             </form>
@@ -1135,7 +1267,11 @@ if ($isAdmin) {
                                                             <form method="post" action="admin.php?tab=users" class="m-0" onsubmit="return confirm('Excluir permanentemente o usuário \'<?= htmlspecialchars($user['username'], ENT_QUOTES) ?>\'? Os tickets dele continuarão existindo mas sem vínculo de usuário.');">
                                                                 <input type="hidden" name="delete_user" value="1">
                                                                 <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+<<<<<<< HEAD
                                                                 <button type="submit" class="btn btn-danger btn-sm" data-loading-text="Excluindo usuário..." style="padding: 6px 12px; margin: 0; background-color: #dc3545; border-color: #dc3545; color: white;" title="Excluir Usuário">
+=======
+                                                                <button type="submit" class="btn btn-danger btn-sm" style="padding: 6px 12px; margin: 0; background-color: #dc3545; border-color: #dc3545; color: white;" title="Excluir Usuário">
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                                                                     <i class="fas fa-trash-alt"></i>
                                                                 </button>
                                                             </form>
@@ -1268,6 +1404,7 @@ if ($isAdmin) {
             modal.show();
         }
     </script>
+<<<<<<< HEAD
     <script>
     // Bloqueia envios repetidos e mostra feedback no botão correto
     document.querySelectorAll('form').forEach(function(form) {
@@ -1303,6 +1440,8 @@ if ($isAdmin) {
         });
     });
 </script>
+=======
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
 <?php endif; ?>
 
 </body>

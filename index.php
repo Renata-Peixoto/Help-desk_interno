@@ -43,6 +43,7 @@ $messageText = '';
 $responsible = 'Não sabe';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+<<<<<<< HEAD
     if (isset($_POST['user_reply_ticket'])) {
         $ticketId = (int)($_POST['ticket_id'] ?? 0);
         $replyMessage = trim($_POST['reply_message'] ?? '');
@@ -127,6 +128,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: index.php?status=success');
                 exit;
             }
+=======
+    // Força o nome e e-mail a serem os do usuário autenticado para segurança
+    $name = $currentUser['username'];
+    $email = $currentUser['email'];
+    $subject = trim($_POST['subject'] ?? '');
+    $messageText = trim($_POST['message'] ?? '');
+    $responsible = trim($_POST['responsible'] ?? 'Não sabe');
+    $attachment = null;
+
+    if ($subject === '' || $messageText === '') {
+        $message = 'Por favor, preencha todos os campos obrigatórios do formulário.';
+    } else {
+        // processa anexo, se houver
+        if (!empty($_FILES['attachment']) && $_FILES['attachment']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['attachment'];
+            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            $mime = $finfo->file($file['tmp_name']);
+            $allowed = [
+                'image/jpeg' => 'jpg',
+                'image/png' => 'png',
+                'image/gif' => 'gif',
+                'application/pdf' => 'pdf',
+            ];
+            if (!array_key_exists($mime, $allowed)) {
+                $message = 'Anexo inválido. Apenas imagens e PDFs são permitidos.';
+            } elseif ($file['size'] > 20 * 1024 * 1024) {
+                $message = 'Arquivo muito grande. Limite 20MB.';
+            } else {
+                $ext = $allowed[$mime];
+                $basename = bin2hex(random_bytes(8));
+                $filename = $basename . '.' . $ext;
+                if (!move_uploaded_file($file['tmp_name'], UPLOAD_DIR . '/' . $filename)) {
+                    $message = 'Falha ao salvar o anexo.';
+                } else {
+                    $attachment = $filename;
+                }
+            }
+        }
+
+        // se não houve erro de anexo, insere no banco
+        if ($message === '') {
+            $stmt = $db->prepare('INSERT INTO tickets (user_id, name, email, subject, message, responsible, attachment) VALUES (?, ?, ?, ?, ?, ?, ?)');
+            $userId = $currentUser['id'];
+            $stmt->execute([$userId, $name, $email, $subject, $messageText, $responsible, $attachment]);
+            $ticketId = (int) $db->lastInsertId();
+            $sent = sendNewTicketNotifications($db, $ticketId);
+            if ($sent) {
+                $message = 'Solicitação registrada com sucesso. Confirmação enviada para o seu email.';
+            } else {
+                $message = 'Solicitação registrada com sucesso. Falha ao enviar confirmação para o seu email.';
+            }
+            // Limpa os campos do formulário pós-envio
+            $subject = $messageText = '';
+            $responsible = 'Não sabe';
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
         }
     }
 }
@@ -191,7 +247,11 @@ $tickets = $stmt->fetchAll();
                         <label><i class="fas fa-paperclip"></i> Anexo (imagem ou PDF - Máximo 20MB)
                         <input type="file" name="attachment" accept="image/*,application/pdf">
                         </label>
+<<<<<<< HEAD
                         <button type="submit" class="btn-arruda-primary" data-loading-text="Enviando ticket..." style="width: 100%;">
+=======
+                        <button type="submit" class="btn-arruda-primary" style="width: 100%;">
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                             <i class="fas fa-paper-plane"></i> Enviar Ticket
                         </button>
 
@@ -299,6 +359,7 @@ $tickets = $stmt->fetchAll();
                                         <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
+<<<<<<< HEAD
                                 <?php
                                     // Busca as respostas para exibir para o cliente
                                     $stmtR = $db->prepare('SELECT * FROM ticket_responses WHERE ticket_id = ? AND created_at >= ? ORDER BY created_at ASC');
@@ -344,6 +405,8 @@ $tickets = $stmt->fetchAll();
                                         </div>
                                     </form>
                                 <?php endif; ?>
+=======
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
                             </div>
 
                             <div class="modal-footer bg-light p-3">
@@ -364,6 +427,7 @@ $tickets = $stmt->fetchAll();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+<<<<<<< HEAD
         document.querySelectorAll('form').forEach(function(form) {
             form.addEventListener('submit', function(e) {
                 if (form.getAttribute('data-submitting') === 'true') {
@@ -401,5 +465,15 @@ $tickets = $stmt->fetchAll();
             window.history.replaceState(null, null, window.location.href);
         }
     </script> 
+=======
+    document.querySelector('form').addEventListener('submit', function(e) {
+    var btn = this.querySelector('button[type="submit"]');
+    if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    }
+});
+</script>
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
 </body>
 </html>

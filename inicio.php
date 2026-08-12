@@ -215,6 +215,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <a href="https://api.whatsapp.com/send?phone=551124535388" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
             
+<<<<<<< HEAD
        <p class="mb-3">&copy; 2026 Arruda Empresarial - Help Desk. Todos os direitos reservados.</p>
             
                 <div class="custom-footer-links pb-2">
@@ -222,6 +223,14 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a href="https://arrudaempresarial.com.br/termos-de-servico-help-desk/">Termos de Serviço</a> | 
                         <span style="color: #f9f9f9;">Desenvolvido por Renata Peixoto</span>
                 </div> 
+=======
+            <p class="mb-3">&copy; 2026 Arruda Empresarial - Help Desk. Todos os direitos reservados.</p>
+            
+            <div class="custom-footer-links pb-2">
+                <a href="https://arrudaempresarial.com.br/politica-de-privacidade-help-desk/">Política de Privacidade</a> | 
+                <a href="https://arrudaempresarial.com.br/termos-de-servico-help-desk/">Termos de Serviço</a> | 
+            </div>
+>>>>>>> 243678c3e4b8b408795331c9a885c0e0c146c3a2
         </div>
     </footer>
 </div>
