@@ -3,28 +3,28 @@
 // No KingHost, crie um banco de dados e um usuário, depois atualize esses valores.
 
 <<<<<<< HEAD
-const DB_HOST = 'mysql.contabilarruda.com.br';
-const DB_NAME = 'contabilarruda';
-const DB_USER = 'contabilar_add1';
-const DB_PASS = 'Arruda2026helpdesck';
+const DB_HOST = '';
+const DB_NAME = '';
+const DB_USER = '';
+const DB_PASS = '';
 
 // Configuração de email para notificações e recebimento de tickets
-const MAIL_FROM_ADDRESS = 'help-desk@arrudaempresarial.com.br';
-const MAIL_FROM_NAME = 'Help Desk Arruda';
-const MAIL_ADMIN_ADDRESS = 'help-desk@arrudaempresarial.com.br';
+const MAIL_FROM_ADDRESS = '';
+const MAIL_FROM_NAME = '';
+const MAIL_ADMIN_ADDRESS = '';
 
 // Configurações de Envio (SMTP)
-const MAIL_SMTP_HOST = 'smtp.kinghost.net';
-const MAIL_SMTP_PORT = 587;
-const MAIL_SMTP_USER = 'help-desk@arrudaempresarial.com.br';
-const MAIL_SMTP_PASS = 'Arruda@2026';
-const MAIL_SMTP_SECURE = 'tls';
+const MAIL_SMTP_HOST = '';
+const MAIL_SMTP_PORT = ;
+const MAIL_SMTP_USER = '';
+const MAIL_SMTP_PASS = ';
+const MAIL_SMTP_SECURE = '';
 
 // Configurações de Recebimento (POP3)
-const MAIL_POP3_HOST = 'pop.kinghost.net'; 
-const MAIL_POP3_PORT = 995; 
-const MAIL_POP3_USER = 'help-desk@arrudaempresarial.com.br';
-const MAIL_POP3_PASS = 'Arruda@2026';
+const MAIL_POP3_HOST = ''; 
+const MAIL_POP3_PORT = ''; 
+const MAIL_POP3_USER = '';
+const MAIL_POP3_PASS = '';
 =======
 const DB_HOST = 'SEU';
 const DB_NAME = 'SEU';
@@ -143,8 +143,8 @@ function ensureDbSchema(PDO $db): void
         $hash = password_hash('arruda@2026', PASSWORD_DEFAULT);
         $stmtInsert = $db->prepare("INSERT INTO admins (name, email, password_hash) VALUES (?, ?, ?)");
 <<<<<<< HEAD
-        $stmtInsert->execute(['Admin Renata', 'r.goveia@arrudaempresarial.com.br', $hash]);
-        $stmtInsert->execute(['Admin Celeste', 'celeste@arrudaempresarial.com.br', $hash]);
+        $stmtInsert->execute(['', '', $hash]);
+        $stmtInsert->execute(['', '', $hash]);
 =======
         $stmtInsert->execute([''SEU';', ''SEU';', $hash]);
         $stmtInsert->execute([''SEU';', ''SEU';', $hash]);
