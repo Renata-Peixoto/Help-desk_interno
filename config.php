@@ -140,7 +140,7 @@ function ensureDbSchema(PDO $db): void
     $stmtAdmins = $db->query("SELECT COUNT(*) FROM admins");
     $adminsCount = (int)$stmtAdmins->fetchColumn();
     if ($adminsCount === 0) {
-        $hash = password_hash('arruda@2026', PASSWORD_DEFAULT);
+        $hash = password_hash('', PASSWORD_DEFAULT);
         $stmtInsert = $db->prepare("INSERT INTO admins (name, email, password_hash) VALUES (?, ?, ?)");
 <<<<<<< HEAD
         $stmtInsert->execute(['', '', $hash]);
