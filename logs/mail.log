@@ -1,0 +1,285 @@
+[2026-07-31 13:30:32] Send attempt to: postmaster@arrudaempresarial.com.br | Subject: Recebemos seu ticket: 1
+Attachments: 077124e1bc28aad2.pdf
+Connecting to tcp://smtp.kinghost.net:587
+S: 220 smtp-sp217-128.kinghost.net ESMTP
+C: EHLO localhost
+S: 250-smtp-sp217-128.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-STARTTLS
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: STARTTLS
+S: 220 2.0.0 Ready to start TLS
+C: EHLO localhost
+S: 250-smtp-sp217-128.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: AUTH LOGIN
+S: 334 VXNlcm5hbWU6
+C: aGVscC1kZXNrQGFycnVkYWVtcHJlc2FyaWFsLmNvbS5icg==
+S: 334 UGFzc3dvcmQ6
+C: QXJydWRhQDIwMjY=
+S: 235 2.7.0 Authentication successful
+C: MAIL FROM:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.0 Ok
+C: RCPT TO:<postmaster@arrudaempresarial.com.br>
+S: 250 2.1.5 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+S: 250 2.0.0 Ok: queued as 5159D20018D0
+C: QUIT
+S: 221 2.0.0 Bye
+Result: queued/accepted
+[2026-07-31 13:30:33] Send attempt to: help-desk@arrudaempresarial.com.br | Subject: Novo ticket recebido: #23
+Attachments: 077124e1bc28aad2.pdf
+Connecting to tcp://smtp.kinghost.net:587
+S: 220 smtp-sp217-47.kinghost.net ESMTP
+C: EHLO localhost
+S: 250-smtp-sp217-47.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-STARTTLS
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: STARTTLS
+S: 220 2.0.0 Ready to start TLS
+C: EHLO localhost
+S: 250-smtp-sp217-47.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: AUTH LOGIN
+S: 334 VXNlcm5hbWU6
+C: aGVscC1kZXNrQGFycnVkYWVtcHJlc2FyaWFsLmNvbS5icg==
+S: 334 UGFzc3dvcmQ6
+C: QXJydWRhQDIwMjY=
+S: 235 2.7.0 Authentication successful
+C: MAIL FROM:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.0 Ok
+C: RCPT TO:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.5 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+S: 250 2.0.0 Ok: queued as D6100280128D
+C: QUIT
+S: 221 2.0.0 Bye
+Result: queued/accepted
+[2026-07-31 13:30:33] sendNewTicketNotifications: ticket_id=23 user_sent=1 admin_sent=1
+[2026-07-31 13:31:04] Send attempt to: postmaster@arrudaempresarial.com.br | Subject: Recebemos seu ticket: teste 2
+Attachments: b97bd497a0cd032e.pdf
+Connecting to tcp://smtp.kinghost.net:587
+S: 220 smtp-sp217-202.kinghost.net ESMTP
+C: EHLO localhost
+S: 250-smtp-sp217-202.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-STARTTLS
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: STARTTLS
+S: 220 2.0.0 Ready to start TLS
+C: EHLO localhost
+S: 250-smtp-sp217-202.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: AUTH LOGIN
+S: 334 VXNlcm5hbWU6
+C: aGVscC1kZXNrQGFycnVkYWVtcHJlc2FyaWFsLmNvbS5icg==
+S: 334 UGFzc3dvcmQ6
+C: QXJydWRhQDIwMjY=
+S: 235 2.7.0 Authentication successful
+C: MAIL FROM:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.0 Ok
+C: RCPT TO:<postmaster@arrudaempresarial.com.br>
+S: 250 2.1.5 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+S: 250 2.0.0 Ok: queued as 4CB35802466
+C: QUIT
+S: 221 2.0.0 Bye
+Result: queued/accepted
+[2026-07-31 13:31:05] Send attempt to: help-desk@arrudaempresarial.com.br | Subject: Novo ticket recebido: #24
+Attachments: b97bd497a0cd032e.pdf
+Connecting to tcp://smtp.kinghost.net:587
+S: 220 smtp-sp217-70.kinghost.net ESMTP
+C: EHLO localhost
+S: 250-smtp-sp217-70.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-STARTTLS
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: STARTTLS
+S: 220 2.0.0 Ready to start TLS
+C: EHLO localhost
+S: 250-smtp-sp217-70.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: AUTH LOGIN
+S: 334 VXNlcm5hbWU6
+C: aGVscC1kZXNrQGFycnVkYWVtcHJlc2FyaWFsLmNvbS5icg==
+S: 334 UGFzc3dvcmQ6
+C: QXJydWRhQDIwMjY=
+S: 235 2.7.0 Authentication successful
+C: MAIL FROM:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.0 Ok
+C: RCPT TO:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.5 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+S: 250 2.0.0 Ok: queued as E083D280230F
+C: QUIT
+S: 221 2.0.0 Bye
+Result: queued/accepted
+[2026-07-31 13:31:05] sendNewTicketNotifications: ticket_id=24 user_sent=1 admin_sent=1
+[2026-07-31 13:55:42] Send attempt to: postmaster@arrudaempresarial.com.br | Subject: Recebemos seu ticket: teste 1
+Attachments: 4f6d427dfeaa52a6.pdf
+Connecting to tcp://smtp.kinghost.net:587
+S: 220 smtp-sp217-126.kinghost.net ESMTP
+C: EHLO localhost
+S: 250-smtp-sp217-126.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-STARTTLS
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: STARTTLS
+S: 220 2.0.0 Ready to start TLS
+C: EHLO localhost
+S: 250-smtp-sp217-126.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: AUTH LOGIN
+S: 334 VXNlcm5hbWU6
+C: aGVscC1kZXNrQGFycnVkYWVtcHJlc2FyaWFsLmNvbS5icg==
+S: 334 UGFzc3dvcmQ6
+C: QXJydWRhQDIwMjY=
+S: 235 2.7.0 Authentication successful
+C: MAIL FROM:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.0 Ok
+C: RCPT TO:<postmaster@arrudaempresarial.com.br>
+S: 250 2.1.5 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+S: 250 2.0.0 Ok: queued as 194761801D0A
+C: QUIT
+S: 221 2.0.0 Bye
+Result: queued/accepted
+[2026-07-31 13:55:43] Send attempt to: help-desk@arrudaempresarial.com.br | Subject: Novo ticket recebido: #25
+Attachments: 4f6d427dfeaa52a6.pdf
+Connecting to tcp://smtp.kinghost.net:587
+S: 220 smtp-sp217-8.kinghost.net ESMTP
+C: EHLO localhost
+S: 250-smtp-sp217-8.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-STARTTLS
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: STARTTLS
+S: 220 2.0.0 Ready to start TLS
+C: EHLO localhost
+S: 250-smtp-sp217-8.kinghost.net
+S: 250-PIPELINING
+S: 250-SIZE 62914560
+S: 250-VRFY
+S: 250-ETRN
+S: 250-AUTH PLAIN LOGIN
+S: 250-AUTH=PLAIN LOGIN
+S: 250-ENHANCEDSTATUSCODES
+S: 250-8BITMIME
+S: 250-DSN
+S: 250 CHUNKING
+C: AUTH LOGIN
+S: 334 VXNlcm5hbWU6
+C: aGVscC1kZXNrQGFycnVkYWVtcHJlc2FyaWFsLmNvbS5icg==
+S: 334 UGFzc3dvcmQ6
+C: QXJydWRhQDIwMjY=
+S: 235 2.7.0 Authentication successful
+C: MAIL FROM:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.0 Ok
+C: RCPT TO:<help-desk@arrudaempresarial.com.br>
+S: 250 2.1.5 Ok
+C: DATA
+S: 354 End data with <CR><LF>.<CR><LF>
+S: 250 2.0.0 Ok: queued as 1E71F200038F
+C: QUIT
+S: 221 2.0.0 Bye
+Result: queued/accepted
+[2026-07-31 13:55:43] sendNewTicketNotifications: ticket_id=25 user_sent=1 admin_sent=1
